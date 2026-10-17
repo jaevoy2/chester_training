@@ -1,0 +1,37 @@
+/* ───────── hero: tablet & mobile ─────────
+   Text-only layout (the trainer photo is hidden on small screens): headline,
+   buttons, then the two glass cards over a blue glow. */
+@media (max-width: 860px) {
+  .hero .hero-inner { height: auto; width: calc(100% - 40px); padding: 112px 0 0; display: flex; flex-direction: column; }
+
+  .hero .hero-content { position: static; max-width: 560px; order: 1; }
+  .hero h1 { font-size: clamp(32px, 9.3vw, 58px); letter-spacing: -1.5px; margin-bottom: 16px; }
+  .hero p { max-width: 480px; font-size: 14.5px; margin-bottom: 22px; }
+  .hero-btns { gap: 18px 24px; }
+  .hero-btns .btn { flex: 1 1 auto; text-align: center; max-width: 340px; }
+
+  /* trainer image removed on small screens */
+  .hero .hero-person { display: none; }
+
+  .hero .glass-cards { position: relative; right: auto; bottom: auto; order: 2; z-index: 4;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 520px; margin: 40px 0 0; padding-bottom: 56px; }
+  .hero .glass { width: auto; padding: 18px 16px; border-radius: 14px; }
+  .hero .glass b { font-size: clamp(32px, 9vw, 42px); margin-bottom: 8px; }
+  .hero .glass span { font-size: 10.5px; line-height: 1.5; }
+
+  /* faded title fills the lower part behind the cards */
+  .hero .hero-bg { inset: auto 0 6% 0; font-size: 25vw; letter-spacing: -3px; justify-content: flex-end; }
+
+  /* glow sits behind the cards */
+  .hero::before { inset: 0; background:
+      radial-gradient(ellipse 85% 38% at 55% 80%, #3b9ccf 0%, #2682b4 22%, rgba(22,100,148,.8) 48%, transparent 100%),
+      radial-gradient(ellipse 130% 65% at 50% 72%, #0d4568 0%, rgba(7,42,66,.7) 55%, transparent 100%); }
+  .hero::after { background:
+      linear-gradient(to bottom, rgba(2,8,14,.55), transparent 22%),
+      linear-gradient(to top, rgba(2,8,14,.8), transparent 16%); }
+}
+
+@media (max-width: 380px) {
+  .hero .hero-inner { padding-top: 100px; }
+  .hero .glass span { font-size: 10px; }
+}

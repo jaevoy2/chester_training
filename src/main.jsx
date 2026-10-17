@@ -11,6 +11,7 @@ import './semi.css'
 import './corporate.css'
 import './lehigh.css'
 import './contact.css'
+import './hero-mobile.css'
 import notifyVisit from './notifyVisit.js'
 
 notifyVisit()

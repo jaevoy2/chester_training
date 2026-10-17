@@ -48,6 +48,8 @@ export default function useParallax(dep) {
       layers.forEach((l) => {
         let y
         if (l.mode === 'hero') {
+          // keep the stacked mobile hero in place so the layers stay aligned
+          if (window.innerWidth <= 860 && l.el.closest('.hero')) { l.el.style.translate = ''; return }
           y = Math.min(sy, vh * 1.2) * l.speed
         } else {
           const r = l.el.getBoundingClientRect()

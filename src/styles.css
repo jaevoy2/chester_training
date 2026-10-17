@@ -167,12 +167,6 @@ img { max-width: 100%; display: block; }
   .dd-menu a { padding: 8px 0; }
   .nav-cta { margin-top: 12px; text-align: center; }
 }
-@media (max-width: 860px) {
-  .hero-inner { height: auto; padding: 110px 0 0; display: flex; flex-direction: column; }
-  .hero-content { position: static; order: 1; }
-  .hero-person { position: relative; top: auto; transform: none; left: auto; height: 640px; margin: 20px auto -230px; order: 2; }
-  .glass-cards { position: relative; order: 3; padding-bottom: 28px; flex-wrap: wrap; }
-}
 
 /* scroll reveal */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease var(--d, 0ms), transform .7s cubic-bezier(.2,.7,.2,1) var(--d, 0ms), background .25s; }
