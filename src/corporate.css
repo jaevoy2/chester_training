@@ -1,0 +1,47 @@
+/* hero: group photo + services */
+.corp-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+.corp-photo { position: relative; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4 / 3.6; background: var(--bg3); }
+.corp-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.corp-photo::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,16,26,.65), transparent 50%); pointer-events: none; }
+.corp-badge { position: absolute; z-index: 2; left: 18px; bottom: 18px; max-width: 230px; }
+.corp-badge b { font-size: 46px; }
+.services { display: grid; gap: 14px; margin: 4px 0 30px; }
+.service { padding: 20px 22px; border: 1px solid var(--line); border-left: 3px solid var(--red); background: var(--bg3); transition: transform .3s, border-color .3s; }
+.service:hover { transform: translateX(6px); border-color: var(--red); }
+.service small { color: var(--red); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; }
+.service h3 { font-size: 18px; font-weight: 800; text-transform: uppercase; margin: 4px 0 6px; }
+.service p { font-size: 14px; color: #c7d2d9; }
+
+/* impact panels */
+.impact { display: grid; grid-template-columns: 1.15fr 1fr; gap: 20px; align-items: stretch; }
+.impact-card { padding: 30px 30px 26px; border: 1px solid var(--line); background: var(--bg2); }
+.dark .impact-card { background: var(--bg3); }
+.impact-card h3 { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.impact-card h3 span { display: grid; place-items: center; min-width: 40px; height: 40px; border-radius: 50%; background: var(--red); font-size: 16px; box-shadow: 0 0 0 5px rgba(55,132,171,.18); }
+.impact-card ul { list-style: none; display: grid; gap: 4px 20px; }
+.impact-card:first-child ul { grid-template-columns: 1fr 1fr; }
+.impact-card li { position: relative; padding: 9px 0 9px 26px; font-size: 14px; color: #dbe3e8; border-bottom: 1px dashed rgba(255,255,255,.07); }
+.impact-card li::before { content: '✓'; position: absolute; left: 0; top: 9px; color: var(--red); font-weight: 900; }
+
+/* research banner */
+.stat-banner { position: relative; overflow: hidden; min-height: 420px; display: grid; place-items: center; padding: 50px 20px; border: 1px solid var(--line); isolation: isolate; }
+.stat-banner > img { position: absolute; inset: -6%; width: 112%; height: 112%; max-width: none; object-fit: cover; z-index: -2; }
+.stat-banner::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(135deg, rgba(4,16,26,.82), rgba(15,96,137,.55)); }
+.stat-card { max-width: 640px; text-align: center; padding: 38px 34px; border-radius: 8px 8px 24px 8px; }
+.stat-card b { font-size: clamp(64px, 10vw, 110px); font-weight: 200; line-height: 1; margin: 0; }
+.stat-card em { display: block; font-style: normal; font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #bfe0f2; margin: 6px 0 20px; }
+.stat-card p { font-size: 15.5px; line-height: 1.7; color: #fff; }
+
+/* partner testimonial with photo */
+.partner-quote { display: grid; grid-template-columns: 240px 1fr; gap: 0; margin-top: 36px; border: 1px solid var(--line); background: var(--bg3); align-items: stretch; }
+.partner-quote > img { width: 100%; height: 100%; object-fit: cover; min-height: 300px; }
+.partner-quote .quote { border: 0; border-top: 3px solid var(--red); background: transparent; justify-content: center; gap: 12px; padding: 34px; }
+.partner-quote .quote.story .story-text { min-height: 0; font-size: 17px; }
+.partner-quote .quote.story { gap: 14px; }
+
+@media (max-width: 960px) {
+  .corp-hero, .impact { grid-template-columns: 1fr; gap: 34px; }
+  .impact-card:first-child ul { grid-template-columns: 1fr; }
+  .partner-quote { grid-template-columns: 1fr; }
+  .partner-quote > img { min-height: 0; aspect-ratio: 4 / 3; object-position: center 30%; }
+}

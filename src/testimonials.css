@@ -1,0 +1,56 @@
+/* ───────── testimonials UI refresh ───────── */
+
+/* uniform story cards */
+.cards.stories, .cards.three.grp { align-items: stretch; }
+.quote.story { gap: 0; padding: 28px 26px 24px; height: 100%; }
+.story-top { min-height: 30px; margin-bottom: 14px; display: flex; align-items: center; }
+.story-mark { font-size: 54px; line-height: .6; font-weight: 900; color: var(--red); height: 24px; }
+.story-result { align-self: flex-start; background: var(--red); color: #fff; font-weight: 800; font-size: 12px; letter-spacing: 1px; padding: 5px 12px; }
+.story-text { font-size: 14.5px; line-height: 1.65; color: #dbe3e8; margin: 0 0 14px; }
+.story-text.clamp { display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+/* short quotes still reserve the same height so every card lines up */
+.quote.story .story-text { min-height: calc(1.65em * 6); }
+.story-toggle { align-self: flex-start; background: none; border: 0; color: var(--red); font: inherit; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; cursor: pointer; padding: 0; margin-bottom: 18px; transition: color .2s; }
+.story-toggle:hover { color: #fff; }
+.quote.story cite { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+.quote.story .story-toggle + cite { margin-top: auto; }
+
+/* modal for full story */
+.modal { position: fixed; inset: 0; z-index: 100; background: rgba(2,8,14,.8); backdrop-filter: blur(6px); display: grid; place-items: center; padding: 20px; animation: fadeIn .25s ease; }
+.modal-card { position: relative; width: min(720px, 100%); max-height: 86vh; overflow-y: auto; background: var(--bg2); border: 1px solid var(--line); border-top: 3px solid var(--red); padding: 40px 38px 30px; animation: popIn .35s cubic-bezier(.2,.7,.2,1); }
+.modal-x { position: absolute; top: 10px; right: 14px; background: none; border: 0; color: #fff; font-size: 34px; line-height: 1; cursor: pointer; }
+.modal-x:hover { color: var(--red); }
+.modal-card .story-result { display: inline-block; margin-bottom: 18px; }
+.modal-text p { font-size: 15.5px; line-height: 1.75; color: #dbe3e8; margin-bottom: 16px; }
+.modal-card cite { display: block; font-style: normal; font-weight: 800; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--red); margin-top: 8px; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+
+/* before / after: identical card sizes, photos always fill their frame */
+.ba-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.ba { display: flex; flex-direction: column; margin: 0; overflow: hidden; }
+.ba-imgs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 2px; height: 360px; background: var(--bg); }
+.ba-imgs.n1, .ba-imgs.n2 { grid-template-columns: none; }
+.ba-img { position: relative; aspect-ratio: auto; height: 100%; min-width: 0; overflow: hidden; }
+.ba-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform .6s ease; }
+.ba:hover .ba-img img { transform: scale(1.05); }
+.ba-img span { z-index: 1; }
+.ba figcaption { margin-top: auto; border-top: 1px solid var(--line); }
+
+@media (max-width: 520px) { .ba-imgs { height: 300px; } .modal-card { padding: 34px 22px 24px; } }
+@media (prefers-reduced-motion: reduce) { .modal, .modal-card { animation: none; } }
+
+/* stories grid: last row always fills the full width */
+.cards.stories { grid-template-columns: repeat(6, 1fr); }
+.cards.stories > * { grid-column: span 2; }
+.cards.stories.last2 > *:nth-last-child(-n+2) { grid-column: span 3; }
+.cards.stories.last1 > *:last-child { grid-column: span 6; }
+@media (max-width: 1000px) {
+  .cards.stories { grid-template-columns: repeat(2, 1fr); }
+  .cards.stories > *, .cards.stories.last2 > *:nth-last-child(-n+2) { grid-column: span 1; }
+  .cards.stories.last1 > *:last-child { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .cards.stories { grid-template-columns: 1fr; }
+  .cards.stories > *, .cards.stories.last1 > *:last-child { grid-column: span 1; }
+}
